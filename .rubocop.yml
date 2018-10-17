@@ -1,0 +1,32 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'vendor/**/*'
+    - 'Rakefile'
+    - 'config.ru'
+    - 'Gemfile'
+  TargetRubyVersion: 2.5
+
+Style/AsciiComments:
+  Enabled: false
+Style/AccessorMethodName:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Max: 120
+Metrics/AbcSize:
+  Enabled: false
+Layout/ExtraSpacing:
+  Enabled: false
+Layout/SpaceAroundOperators:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
