@@ -6,5 +6,9 @@ module Types
     def test_field
       "Hello World"
     end
+
+
+    # field :create_issue, mutation: IssueMutations::Create
+    field :login, mutation: UserMutations::Login
   end
 end

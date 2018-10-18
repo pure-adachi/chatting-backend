@@ -9,5 +9,7 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :viewer, resolver: Resolvers::QueryType::ViewerResolver
   end
 end

@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 (1..3).each do |i|
-  User.find_or_create_by(sei: 'テスト', mei: "#{i + 1}郎") do |u|
-    u.loginid  = "loginid#{i + 1}"
+  User.find_or_create_by(sei: 'テスト', mei: "#{i}郎") do |u|
+    u.loginid  = "loginid#{i}"
     u.password = "password"
     u.language = I18n.default_locale
   end.access_tokens.find_or_create_by(token: ENV['RAILS_APP_BEARER_TOKEN'])
