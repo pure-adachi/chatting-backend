@@ -6,10 +6,32 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-(1..3).each do |i|
-  User.find_or_create_by(sei: 'テスト', mei: "#{i}郎") do |u|
-    u.loginid  = "loginid#{i}"
+3.times do
+  User.find_or_create_by(sei: 'テスト', mei: "#{User.count + 1}郎") do |u|
+    u.loginid  = "loginid#{User.count + 1}"
     u.password = "password"
     u.language = I18n.default_locale
   end.access_tokens.find_or_create_by(token: ENV['RAILS_APP_BEARER_TOKEN'])
+end
+
+User.all.to_a.combination(2).each do |combi|
+  talk_room = TalkRoom.new
+  talk_room.users += combi
+  ("A".."C").each do |text|
+    talk_room.messages.new(body: text, user: combi[0])
+  end
+
+  ("D".."F").each do |text|
+    talk_room.messages.new(body: text, user: combi[1])
+  end
+
+  talk_room.save
+end
+
+3.times do
+  User.find_or_create_by(sei: 'テスト', mei: "#{User.count + 1}郎") do |u|
+    u.loginid  = "loginid#{User.count + 1}"
+    u.password = "password"
+    u.language = I18n.default_locale
+  end
 end

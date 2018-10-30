@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_many :user_access_tokens, dependent: :destroy
   has_many :access_tokens, through: :user_access_tokens
+  has_many :user_talk_rooms, dependent: :destroy
+  has_many :talk_rooms, through: :user_talk_rooms
+  has_many :messages, dependent: :destroy
 
   validates :loginid, presence: true
   validates :password, presence: true
