@@ -1,10 +1,15 @@
-development:
-  adapter: async
-
-test:
-  adapter: async
-
-production:
+default: &default
   adapter: redis
   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
   channel_prefix: chatting-backend_production
+
+development:
+  <<: *default
+  channel_prefix: chatting-backend_debelopment
+
+test:
+  <<: *default
+  channel_prefix: chatting-backend_test
+
+production:
+  <<: *default
