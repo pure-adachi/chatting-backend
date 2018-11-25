@@ -14,6 +14,10 @@ class User < ApplicationRecord
     access_tokens.order_latest.first&.token
   end
 
+  def stream_key
+    "user-channel-#{guid}"
+  end
+
   private
 
   def validation_authentication
