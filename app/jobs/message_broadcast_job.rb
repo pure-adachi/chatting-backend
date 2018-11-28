@@ -2,6 +2,8 @@ class MessageBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(message)
-    ActionCable.server.broadcast 'room_channel', message: message
+    message.talk_room.users.each do |user|
+      ActionCable.server.broadcast user.stream_key, message: message
+    end
   end
 end
