@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string     :mei
       t.string     :kana_sei
       t.string     :kana_mei
-      t.string     :affiliation_name
       t.string     :loginid
       t.string     :password
       t.string     :language

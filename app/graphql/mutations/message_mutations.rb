@@ -14,7 +14,7 @@ module MessageMutations
 
     def resolve(**args)
       talk_room = TalkRoom.locate(args[:talk_room_id])
-      message = talk_room.messages.new(user_id: context[:current_user].id, body: args[:body])
+      message = talk_room.messages.new(user_id: context[:current_user].id, body: args[:body].chomp)
       message.save
 
       {
