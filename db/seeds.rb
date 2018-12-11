@@ -11,6 +11,8 @@
     u.loginid  = "loginid#{User.count + 1}"
     u.password = "password"
     u.language = I18n.default_locale
+    u.kana_sei = 'カナセイ'
+    u.kana_mei = "カナメイ#{User.count + 1}"
   end.access_tokens.find_or_create_by(token: ENV['RAILS_APP_BEARER_TOKEN'])
 end
 
