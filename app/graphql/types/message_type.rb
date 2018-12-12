@@ -6,5 +6,6 @@ module Types
     field :body, String, null: true
     field :user, Types::UserType, null: true
     field :own_talk, resolver: Resolvers::UserType::OwnTalkResolver
+    field :created_at, GraphQL::Types::ISO8601DateTime, null: false
   end
 end

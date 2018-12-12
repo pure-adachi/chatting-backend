@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_10_29_140322) do
 
   create_table "talk_rooms", force: :cascade do |t|
     t.string "title"
+    t.boolean "group", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 2018_10_29_140322) do
     t.string "loginid"
     t.string "password"
     t.string "language"
+    t.text "avatar"
     t.integer "lock_version", default: 0, null: false
     t.boolean "deleted", default: false, null: false
     t.datetime "created_at", null: false

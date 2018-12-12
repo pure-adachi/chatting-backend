@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   validate :validation_authentication, on: :login
 
+  before_create :set_avatar
+
   def latest_acess_token
     access_tokens.order_latest.first&.token
   end
@@ -25,5 +27,11 @@ class User < ApplicationRecord
     return if password.blank?
     return if self.class.find_by(loginid: loginid, password: password).present?
     errors.add(:base, :unauthorized)
+  end
+
+  def set_avatar
+    self.avatar = 10.times.map do |i|
+      ENV["RAILS_APP_USER_ICON#{i}"]
+    end.sample
   end
 end

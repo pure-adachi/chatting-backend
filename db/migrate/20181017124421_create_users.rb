@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string     :loginid
       t.string     :password
       t.string     :language
+      t.text       :avatar
       t.integer    :lock_version,               default: 0,     null: false
       t.boolean    :deleted,                    default: false, null: false
 

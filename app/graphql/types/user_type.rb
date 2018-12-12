@@ -11,6 +11,7 @@ module Types
     field :kana_mei, String, null: true
     field :loginid, String, null: true
     field :language, String, null: true
+    field :avatar, String, null: true
     field :talk_room, resolver: Resolvers::UserType::TalkRoomResolver
   end
 end
