@@ -1,0 +1,76 @@
+digraph ChattingBackend {
+rankdir = "LR";
+ranksep = "0.5";
+nodesep = "0.4";
+pad = "0.4,0.4";
+margin = "0,0";
+concentrate = "true";
+labelloc = "t";
+fontsize = "13";
+fontname = "Arial Bold";
+splines = "spline";
+node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "Arial" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
+edge[ fontname  =  "Arial" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
+rankdir = "TB";
+label = "ChattingBackend domain model\n\n";
+m_AccessToken [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">AccessToken</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="token">token <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+</table>
+}>];
+m_Message [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Message</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="body">body <font face="Arial Italic" color="grey60">text</font></td></tr>
+</table>
+}>];
+m_TalkRoom [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">TalkRoom</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="group">group <font face="Arial Italic" color="grey60">boolean ∗</font></td></tr>
+  <tr><td align="left" width="130" port="title">title <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_User [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">User</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="admin">admin <font face="Arial Italic" color="grey60">boolean ∗</font></td></tr>
+  <tr><td align="left" width="130" port="avatar">avatar <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="deleted">deleted <font face="Arial Italic" color="grey60">boolean ∗</font></td></tr>
+  <tr><td align="left" width="130" port="kana_mei">kana_mei <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="kana_sei">kana_sei <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="language">language <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="lock_version">lock_version <font face="Arial Italic" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="loginid">loginid <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="mei">mei <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="password">password <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="sei">sei <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_UserAccessToken [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">UserAccessToken</font></td></tr>
+</table>
+}>];
+m_UserTalkRoom [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">UserTalkRoom</font></td></tr>
+</table>
+}>];
+  m_AccessToken -> m_UserAccessToken [arrowhead = "none", arrowtail = "none", weight = "2"];
+  m_AccessToken -> m_User [style = "dotted", arrowhead = "none", arrowtail = "none", weight = "1", constraint = "false"];
+  m_TalkRoom -> m_Message [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Message [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_TalkRoom -> m_UserTalkRoom [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_TalkRoom -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "2", constraint = "false"];
+  m_User -> m_UserAccessToken [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_AccessToken [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_User -> m_UserTalkRoom [arrowhead = "normal", arrowtail = "none", weight = "2"];
+}
