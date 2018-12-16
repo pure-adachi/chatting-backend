@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChattingBackendSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
@@ -9,6 +11,7 @@ class ChattingBackendSchema < GraphQL::Schema
 
   def parse_error(err, ctx)
     return if Rails.env.development?
+
     ctx.errors.push([[err.class, err]])
   end
 

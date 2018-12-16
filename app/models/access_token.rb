@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AccessToken < ApplicationRecord
   has_one :user_access_token, dependent: :destroy
   has_one :user, through: :user_access_token

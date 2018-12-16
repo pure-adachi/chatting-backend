@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class TalkRoomType < Types::BaseObject
     implements GraphQL::Relay::Node.interface

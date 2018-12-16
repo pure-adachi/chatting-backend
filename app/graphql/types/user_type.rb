@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class UserType < Types::BaseObject
     implements GraphQL::Relay::Node.interface
@@ -5,6 +7,7 @@ module Types
 
     global_id_field :id
     field :latest_acess_token, String, null: true
+    field :latest_message, Types::MessageType, null: true
     field :sei, String, null: true
     field :mei, String, null: true
     field :kana_sei, String, null: true
