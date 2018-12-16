@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Resolvers
   module QueryType
     class TalkRoomsResolver < Resolvers::BaseResolver
@@ -7,6 +9,7 @@ module Resolvers
 
       def resolve(**args)
         return TalkRoom.all if args[:group].blank?
+
         TalkRoom.where(group: true)
       end
     end

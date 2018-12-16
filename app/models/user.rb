@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :user_access_tokens, dependent: :destroy
   has_many :access_tokens, through: :user_access_tokens
@@ -16,6 +18,10 @@ class User < ApplicationRecord
     access_tokens.order_latest.first&.token
   end
 
+  def latest_message
+    messages.order_latest.first
+  end
+
   def stream_key
     "user-channel-#{guid}"
   end
@@ -26,11 +32,12 @@ class User < ApplicationRecord
     return if loginid.blank?
     return if password.blank?
     return if self.class.find_by(loginid: loginid, password: password).present?
+
     errors.add(:base, :unauthorized)
   end
 
   def set_avatar
-    self.avatar = 10.times.map do |i|
+    self.avatar = Array.new(10) do |i|
       ENV["RAILS_APP_USER_ICON#{i}"]
     end.sample
   end

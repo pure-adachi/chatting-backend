@@ -5,8 +5,8 @@
   "scripts": {
     "start": "bundle exec foreman start",
     "install": "bundle install --path vendor/bundle && npm run db-setup",
-    "db-setup": "npm run db-drop && npm run db-seed",
-    "db-drop": "bundle exec rails db:drop && bundle exec rails db:create && bundle exec rails db:migrate",
+    "db-setup": "npm run db-reset && npm run db-seed",
+    "db-reset": "bundle exec rails db:drop && bundle exec rails db:create && bundle exec rails db:migrate",
     "db-seed": "bundle exec rails db:seed",
     "doc-erd": "bundle exec erd && dot -T svg doc/erd/schema.dot -o doc/erd/schema.svg"
   }

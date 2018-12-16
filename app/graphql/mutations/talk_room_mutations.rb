@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TalkRoomMutations
   class Create < Mutations::BaseMutation
     graphql_name 'CreateTalkRoom'
@@ -8,7 +10,7 @@ module TalkRoomMutations
     argument :group, Boolean, description: 'group flag', required: false
     argument :user_ids, [ID, null: true], description: 'users.id', required: true
 
-    def ready?(**args)
+    def ready?(**_args)
       mutation_authorize { return true if TalkRoomPolicy.new(context[:current_user], nil).create? }
     end
 

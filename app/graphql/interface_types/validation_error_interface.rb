@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InterfaceTypes
   module ValidationErrorInterface
     include Types::BaseInterface

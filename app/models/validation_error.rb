@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ValidationError
   attr_accessor :field, :keys
 

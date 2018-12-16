@@ -36,7 +36,21 @@ end
     u.loginid  = "loginid#{User.count + 1}"
     u.password = "password"
     u.language = I18n.default_locale
+    u.kana_sei = 'テスト'
+    u.kana_mei = "#{User.count + 1}ロウ"
   end
 
   p "Create #{i + 1} User."
+end
+
+3.times do |i|
+  User.find_or_create_by(sei: 'Smith', mei: "John #{i + 1}") do |u|
+    u.loginid  = "en#{i + 1}"
+    u.password = "password"
+    u.language = :en
+    u.kana_sei = u.sei
+    u.kana_mei = u.mei
+  end
+
+  p "Create #{i + 1} English User."
 end

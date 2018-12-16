@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MessageMutations
   class Create < Mutations::BaseMutation
     graphql_name 'CreateMessage'
@@ -9,7 +11,9 @@ module MessageMutations
     argument :body, String, required: false
 
     def ready?(**args)
-      mutation_authorize { return true if MessagePolicy.new(context[:current_user], TalkRoom.locate(args[:talk_room_id])).create? }
+      mutation_authorize do
+        return true if MessagePolicy.new(context[:current_user], TalkRoom.locate(args[:talk_room_id])).create?
+      end
     end
 
     def resolve(**args)
