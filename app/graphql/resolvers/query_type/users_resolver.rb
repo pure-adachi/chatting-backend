@@ -8,7 +8,7 @@ module Resolvers
       argument :ignore_self, Boolean, required: false
 
       def resolve(**args)
-        return User.all if args[:ignore_self]
+        return User.all unless args[:ignore_self]
 
         User.where.not(id: context[:current_user].id)
       end
